@@ -37,6 +37,36 @@ Sebelum mulai, pastikan perangkat lab punya:
 - Browser atau `curl`
 - Opsional: `apache2-utils` kalau ingin memakai `ab` untuk simulasi flood
 
+Kalau Docker belum terpasang dan sistemmu berbasis Ubuntu, Debian, atau Kali, install cepat dengan satu baris:
+
+```bash
+sudo apt update && sudo apt install -y docker.io docker-compose curl apache2-utils
+```
+
+Keterangan paket:
+- `docker.io` untuk Docker Engine
+- `docker-compose` untuk command `docker compose` atau `docker-compose`
+- `curl` untuk uji request manual dari terminal
+- `apache2-utils` opsional untuk simulasi flood memakai `ab`
+
+Setelah install, aktifkan service Docker:
+
+```bash
+sudo systemctl enable --now docker
+```
+
+Supaya user biasa bisa menjalankan Docker tanpa `sudo`, tambahkan user ke group Docker:
+
+```bash
+sudo usermod -aG docker $USER
+```
+
+Lalu logout-login lagi, atau jalankan:
+
+```bash
+newgrp docker
+```
+
 Cek versi tool:
 
 ```bash
@@ -59,6 +89,8 @@ cd /path/ke/praktikum10-toko-log-lab
 ```
 
 Kalau project masih berbentuk `.zip`, extract dulu lalu masuk ke folder hasil extract.
+
+Kalau Docker belum di-install, kerjakan dulu langkah install di bagian **Prasyarat**, lalu lanjut ke langkah berikutnya.
 
 ### 2. Jalankan container
 
